@@ -1,0 +1,31 @@
+{
+  "name": "agroset",
+  "description": "app",
+  "private": true,
+  "moduleType": "amd",
+  "authors": [],
+  "main": [
+    "./src/index.html",
+    "./src/app.js",
+    "./src/app.css"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "requirejs": "latest",
+    "requirejs-domready": "latest",
+    "text": "^2.0.15",
+    "angular-ui-router": "^1.0.5"
+  },
+  "ignore": [
+    ".eslintrc.json",
+    ".gitignore",
+    "Gruntfile.js",
+    "karma.conf.js",
+    "package.json",
+    "README.md",
+    "CHANGELOG.md",
+    "dist",
+    "test",
+    "tasks"
+  ]
+}

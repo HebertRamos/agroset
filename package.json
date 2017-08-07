@@ -1,0 +1,24 @@
+{
+  "group": "br.com.app",
+  "name": "agroset",
+  "description": "app",
+  "private": true,
+  "version": "1.0.1",
+  "directories": {
+    "dist": "dist",
+    "src": "src",
+    "test": "test"
+  },
+  "devDependencies": {
+    "amd-optimize": "^0.6.1",
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-amd-optimizer": "^0.6.0",
+    "gulp-concat": "^2.6.1",
+    "http-server": "^0.10.0"
+  },
+  "scripts": {
+    "start": "http-server src -a 0.0.0.0 -p 8002 -c-1"
+  },
+  "dependencies": {}
+}
