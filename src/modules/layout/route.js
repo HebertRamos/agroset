@@ -9,7 +9,8 @@ define(['./module', 'text!./view.html'], function (app, view) {
 
         $stateProvider.state('layout', {
             abstract:true,
-            template: view
+            template: view,
+            controller:'LayoutController'
         });
 
     }]);

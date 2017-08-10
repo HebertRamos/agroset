@@ -5,15 +5,17 @@ define([
     'angular',
     '../modules/layout/main',
     '../modules/login/main',
-    '../modules/home/main'
+    '../modules/home/main',
+    '../modules/session-user/main'
 ], function (ng) {
     'use strict';
 
     return ng.module('app', [
         'ui.router',
-        'app.login',
         'app.layout',
-        'app.home'
+        'app.home',
+        'app.login',
+        'app.session-user'
     ]).config(['$locationProvider', function($locationProvider) {
         $locationProvider.hashPrefix('');
     }]);

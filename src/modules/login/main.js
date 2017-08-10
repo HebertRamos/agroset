@@ -3,5 +3,6 @@
  */
 define([
     './route',
-    './controller'
+    './controller',
+    './run'
 ], function () {});

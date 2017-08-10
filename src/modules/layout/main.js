@@ -2,5 +2,6 @@
  * @author hebert ramos
  */
 define([
-    './route'
+    './route',
+    './controller'
 ], function () {});
