@@ -1,0 +1,206 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="#" ui-sref="layout.home">Home</a></li>
+    <li class="active">Item Compra</li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+    <h2><span class="fa fa-columns"></span> Item Compra</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <!-- START TABS -->
+                    <div class="panel panel-default tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Dados Gerais</a></li>
+                            <li ng-if="acao !== 'new'" ><a href="#tab-second" role="tab" data-toggle="tab" ng-click="irParaAbaEntradas()">Entradas</a>
+                            </li>
+                            <li ng-if="acao !== 'new'" ><a id="tab-third-link" href="#tab-third" role="tab" data-toggle="tab"
+                                   ng-click="irParaAbaSaidas()">Saídas</a></li>
+                        </ul>
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="tab-first">
+
+                                <!-- START DEFAULT FORM ELEMENTS -->
+                                <div class="block">
+                                    <form class="form-horizontal" role="form">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Código</label>
+
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" ng-if="acao !== 'view'" ng-model="itemCompra.codigo"/>
+                                                <p class="form-control-static" ng-if="acao === 'view'" >{{itemCompra.codigo}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Nome</label>
+
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" ng-if="acao !== 'view'" ng-model="itemCompra.nome"/>
+                                                <p class="form-control-static" ng-if="acao === 'view'" >{{itemCompra.nome}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Estoque Mínimo</label>
+
+                                            <div class="col-md-10">
+                                                <input type="text" class="form-control" ng-if="acao !== 'view'" ng-model="itemCompra.estoqueMinimo"/>
+                                                <p class="form-control-static" ng-if="acao === 'view'" >{{itemCompra.estoqueMinimo}}</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Unidade de Medida</label>
+
+                                            <div class="col-md-10">
+                                                <select class="form-control select"  ng-if="acao !== 'view'" ng-model="itemCompra.unidadeMedida"
+                                                        ng-options="key as value for (key , value) in unidadesMedida">
+                                                </select>
+
+                                                <p class="form-control-static" ng-if="acao === 'view'" >{{itemCompra.unidadeMedida | unidadeMedidaFilter}}</p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END DEFAULT FORM ELEMENTS -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-success pull-right" ng-click="salvar()">Salvar</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="tab-second">
+
+                                <div class="row" ng-if="isNovaEntrada">
+                                    <div class="col-md-12">
+
+                                        <div class="block">
+                                            <form class="form-horizontal" role="form">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Quantidade</label>
+
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control"
+                                                               value="Some text value..."
+                                                               ng-model="novaEntrada.quantidade"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="btn-group pull-right">
+                                                    <button class="btn btn-success pull-right"
+                                                            ng-click="salvarEntrada($event)">Salvar
+                                                    </button>
+                                                    <button class="btn btn-danger pull-right"
+                                                            ng-click="cancelarEntrada($event)">Cancelar
+                                                    </button>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" ng-if="!isNovaEntrada">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-success pull-right"
+                                                ng-click="novaEntrada()">Nova Entrada
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <br/>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="gridEntradas" ui-grid="entradasGridOptions" ui-grid-auto-resize
+                                             class="grid"></div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="tab-pane" id="tab-third">
+
+                                <div class="row" ng-if="isNovaSaida">
+                                    <div class="col-md-12">
+
+                                        <div class="block">
+                                            <form class="form-horizontal" role="form">
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Quantidade</label>
+
+                                                    <div class="col-md-10">
+                                                        <input type="text" class="form-control"
+                                                               value="Some text value..."
+                                                               ng-model="novaSaida.quantidade"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Justificativa</label>
+                                                    <div class="col-md-10">
+                                                        <textarea class="form-control" rows="5" ng-model="novaSaida.justificativa"></textarea>
+                                                    </div>
+                                                </div>
+
+                                                <div class="btn-group pull-right">
+                                                    <button class="btn btn-success pull-right"
+                                                            ng-click="salvarSaida($event)">Salvar
+                                                    </button>
+                                                    <button class="btn btn-danger pull-right"
+                                                            ng-click="cancelarSaida($event)">Cancelar
+                                                    </button>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row" ng-if="!isNovaSaida">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-success pull-right"
+                                                ng-click="novaSaida()">Nova Saída Manual
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+
+                                        <div id="gridSaida" ui-grid="saidasGridOptions" ui-grid-auto-resize
+                                             class="grid"></div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- END TABS -->
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- END PAGE CONTENT WRAPPER -->

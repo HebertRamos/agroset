@@ -14,7 +14,13 @@
     "requirejs": "latest",
     "requirejs-domready": "latest",
     "text": "^2.0.15",
-    "angular-ui-router": "^1.0.5"
+    "angular-ui-router": "^1.0.5",
+    "jquery": "^3.2.1",
+    "bootstrap": "^3.3.7",
+    "angular-ui-grid": "^4.0.6",
+    "bootstrap-select": "^1.12.4",
+    "angular-resource": "^1.6.5",
+    "noty": "^3.1.2"
   },
   "ignore": [
     ".eslintrc.json",

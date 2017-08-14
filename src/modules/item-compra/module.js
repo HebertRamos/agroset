@@ -3,5 +3,5 @@
  */
 define(['angular'], function (ng) {
     'use strict';
-    return ng.module('app.session-user', []);
+    return ng.module('app.item-compra', []);
 });

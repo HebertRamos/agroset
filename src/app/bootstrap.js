@@ -6,9 +6,12 @@ define([
     'require',
     'angular',
     'angularRoute',
+    'angularUiGrid',
+    'angularResource',
     './app',
-    './logged-user'
-], function (require, ng, ngRoute, app, loggedUser) {
+    './logged-user',
+    'bootstrap'
+], function (require, ng, ngRoute, ngUiGrid, angularResource, app, loggedUser) {
     'use strict';
 
     function bootstrapApp(document, loggedUser_){

@@ -1,0 +1,39 @@
+<!-- START BREADCRUMB -->
+<ul class="breadcrumb">
+    <li><a href="#" ui-sref="layout.home">Home</a></li>
+    <li class="active">Item Compra</li>
+</ul>
+<!-- END BREADCRUMB -->
+
+<!-- PAGE TITLE -->
+<div class="page-title">
+    <h2><span class="fa fa-columns"></span> Item Compra</h2>
+</div>
+<!-- END PAGE TITLE -->
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+
+    <div class="row" ng-if="!isNovaEntrada">
+        <div class="col-md-12">
+            <a class="btn btn-success pull-right" ui-sref="layout.itemCompraNew">Novo Item Compra</a>
+        </div>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="panel panel-default">
+                <div class="panel-body">
+
+                    <div id="grid1" ui-grid="gridOptions" class="grid"></div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT WRAPPER -->

@@ -1,7 +1,7 @@
 /**
  * @author hebert ramos
  */
-define(['./module'], function (module) {
+define(['./module', 'angular'], function (module, angular) {
     'use strict';
 
     module.controller('LoginController', ['$scope', '$stateParams', 'loggedUserService', function ($scope, $stateParams, loggedUserService) {
@@ -13,5 +13,9 @@ define(['./module'], function (module) {
         }
 
         $scope.hasError = $stateParams.error;
+
+        var element = angular.element('#username');
+        element.focus();
+
     }]);
 });
