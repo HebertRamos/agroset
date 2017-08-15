@@ -28,6 +28,14 @@ define(['../module', 'text!./view.html'], function (app, view) {
                             estoqueMinimo: 1
                         };
                     }
+                }],
+                fornecedores: ['FornecedorService', '$stateParams', function(FornecedorService, $stateParams){
+
+                    if ($stateParams.id) {
+                        return FornecedorService.buscarTodos();
+                    }else{
+                        return [];
+                    }
                 }]
             }
         };
@@ -42,7 +50,8 @@ define(['../module', 'text!./view.html'], function (app, view) {
                 acao: function () {
                     return 'new'
                 },
-                itemCompra: defaultState.resolve.itemCompra
+                itemCompra: defaultState.resolve.itemCompra,
+                fornecedores: defaultState.resolve.fornecedores
             }
 
         });
@@ -57,7 +66,8 @@ define(['../module', 'text!./view.html'], function (app, view) {
                 acao: function () {
                     return 'view'
                 },
-                itemCompra: defaultState.resolve.itemCompra
+                itemCompra: defaultState.resolve.itemCompra,
+                fornecedores: defaultState.resolve.fornecedores
             }
 
         });
@@ -73,7 +83,8 @@ define(['../module', 'text!./view.html'], function (app, view) {
                 acao: function () {
                     return 'edit'
                 },
-                itemCompra: defaultState.resolve.itemCompra
+                itemCompra: defaultState.resolve.itemCompra,
+                fornecedores: defaultState.resolve.fornecedores
             }
         });
 

@@ -97,6 +97,18 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <label class="col-md-2 control-label">Forneedores</label>
+
+                                                    <div class="col-md-10">
+                                                        <select class="form-control select"  ng-if="acao !== 'view'" ng-model="novaEntrada.fornecedor"
+                                                                ng-options="forn as forn.nome for forn in fornecedores track by forn.id">
+                                                        </select>
+
+                                                        <p class="form-control-static" ng-if="acao === 'view'" >{{itemCompra.unidadeMedida | unidadeMedidaFilter}}</p>
+                                                    </div>
+                                                </div>
+
                                                 <div class="btn-group pull-right">
                                                     <button class="btn btn-success pull-right"
                                                             ng-click="salvarEntrada($event)">Salvar

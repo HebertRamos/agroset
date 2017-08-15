@@ -14,7 +14,7 @@ define(['../module', 'angular'], function (module, angular) {
 
     function iniciarAbaEntrada($scope, EntradaItemCompraService) {
 
-        var novaEntradaDefault = {quantidade: 1, itemCompra: $scope.itemCompra};
+        var novaEntradaDefault = {quantidade: 1, itemCompra: $scope.itemCompra, fornecedor:{}};
 
         function setNovaEntrada() {
             $scope.novaEntrada = angular.copy(novaEntradaDefault);
@@ -35,6 +35,7 @@ define(['../module', 'angular'], function (module, angular) {
             columnDefs: [
                 {name: 'data', type: 'date', cellFilter: 'date:\'dd/MM/yyyy HH:mm\''},
                 {name: 'quantidade'},
+                {name: 'fornecedor', field:'fornecedor.nome'},
                 {name: 'usuário', field:'usuario.nome'}
             ],
             data: []
@@ -137,15 +138,16 @@ define(['../module', 'angular'], function (module, angular) {
 
     }
 
-    module.controller('ItemCompraEditController', ['$scope', '$state', 'ItemCompraService', 'itemCompra', 'acao', 'UNIDADES_MEDIDA', 'EntradaItemCompraService','SaidaItemCompraService',
-        function ($scope, $state, ItemCompraService, itemCompra, acao, UNIDADES_MEDIDA, EntradaItemCompraService, SaidaItemCompraService) {
+    module.controller('ItemCompraEditController', ['$scope', '$state', 'ItemCompraService', 'itemCompra', 'acao', 'UNIDADES_MEDIDA', 'EntradaItemCompraService','SaidaItemCompraService', 'fornecedores',
+        function ($scope, $state, ItemCompraService, itemCompra, acao, UNIDADES_MEDIDA, EntradaItemCompraService, SaidaItemCompraService, fornecedores) {
 
 
             $scope.acao = acao;
+            $scope.fornecedores = fornecedores;
             armazenarItemCompraNoEscope($scope, itemCompra);
             armazenarUnidadeMedidaNoEscopo($scope, UNIDADES_MEDIDA);
 
-            iniciarAbaEntrada($scope, EntradaItemCompraService);
+            iniciarAbaEntrada($scope, EntradaItemCompraService, fornecedores);
             iniciarAbaSaida($scope, SaidaItemCompraService);
 
             $scope.salvar = function () {

@@ -7,7 +7,8 @@ define([
     '../modules/login/main',
     '../modules/home/main',
     '../modules/session-user/main',
-    '../modules/item-compra/main'
+    '../modules/item-compra/main',
+    '../modules/fornecedor/main'
 ], function (ng) {
     'use strict';
 
@@ -17,7 +18,8 @@ define([
         'app.home',
         'app.login',
         'app.session-user',
-        'app.item-compra'
+        'app.item-compra',
+        'app.fornecedor'
     ]).config(['$locationProvider', function($locationProvider) {
         $locationProvider.hashPrefix('');
     }]);
